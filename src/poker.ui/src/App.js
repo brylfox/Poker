@@ -4,6 +4,7 @@ import Card from './Card';
 
 function App() {
 
+  const pokerUrl = 'https://localhost:7141/api/Poker';
   const [game, setGame] = useState(
     {
       handOne: {
@@ -57,12 +58,12 @@ function App() {
       },
       body: JSON.stringify(game)
     };
-    
-    const response = fetch('https://localhost:7141/api/Poker', requestOptions)
+
+    const response = fetch(pokerUrl, requestOptions)
       // .then(res => {
       //   if (res.ok) {
       //     alert('success');
-          
+
       //   }
       //   res.json();
       // })
@@ -75,13 +76,13 @@ function App() {
         gameResult.winner.handRank = data.winner.handRank;
         gameResult.loser.name = data.loser.hand.owner;
         gameResult.loser.cardRank = data.loser.cardRank;
-        gameResult.loser.handRank = data.loser.handRank;        
+        gameResult.loser.handRank = data.loser.handRank;
         setResult(gameResult);
       })
       .catch(function (error) {
       console.log(error);
     });
-  }  
+  }
 
 
   // const handleChange = (e) => {
@@ -107,14 +108,14 @@ function App() {
             ...game.handOne,
             owner: e.target.value
           }
-        })}>        
+        })}>
       </input><br></br>
       <label>Card 1</label>
       <input
         type="text" required maxLength={2}
         value={handOne.cards[0].id}
         onChange={e => {
-          const g = { ...game };          
+          const g = { ...game };
           g.handOne.cards[0].id = e.target.value;
           setGame(g);
         }}>
@@ -124,7 +125,7 @@ function App() {
         type="text" required maxLength={2}
         value={handOne.cards[1].id}
         onChange={e => {
-          const g = { ...game };          
+          const g = { ...game };
           g.handOne.cards[1].id = e.target.value;
           setGame(g);
         }}>
@@ -134,7 +135,7 @@ function App() {
         type="text" required maxLength={2}
         value={handOne.cards[2].id}
         onChange={e => {
-          const g = { ...game };          
+          const g = { ...game };
           g.handOne.cards[2].id = e.target.value;
           setGame(g);
         }}>
@@ -144,7 +145,7 @@ function App() {
         type="text" required maxLength={2}
         value={handOne.cards[3].id}
         onChange={e => {
-          const g = { ...game };          
+          const g = { ...game };
           g.handOne.cards[3].id = e.target.value;
           setGame(g);
         }}>
@@ -154,7 +155,7 @@ function App() {
           type="text" required maxLength={2}
           value={handOne.cards[4].id}
         onChange={e => {
-          const g = { ...game };          
+          const g = { ...game };
           g.handOne.cards[4].id = e.target.value;
           setGame(g);
         }}>
@@ -173,14 +174,14 @@ function App() {
               ...game.handTwo,
               owner: e.target.value
             }
-          })}>        
+          })}>
         </input><br></br>
         <label>Card 1</label>
         <input
           type="text" required maxLength={2}
           value={handTwo.cards[0].id}
           onChange={e => {
-            const g = { ...game };          
+            const g = { ...game };
             g.handTwo.cards[0].id = e.target.value;
             setGame(g);
           }}>
@@ -190,7 +191,7 @@ function App() {
           type="text" required maxLength={2}
           value={handTwo.cards[1].id}
           onChange={e => {
-            const g = { ...game };          
+            const g = { ...game };
             g.handTwo.cards[1].id = e.target.value;
             setGame(g);
           }}>
@@ -200,7 +201,7 @@ function App() {
           type="text" required maxLength={2}
           value={handTwo.cards[2].id}
           onChange={e => {
-            const g = { ...game };          
+            const g = { ...game };
             g.handTwo.cards[2].id = e.target.value;
             setGame(g);
           }}>
@@ -210,7 +211,7 @@ function App() {
           type="text" required maxLength={2}
           value={handTwo.cards[3].id}
           onChange={e => {
-            const g = { ...game };          
+            const g = { ...game };
             g.handTwo.cards[3].id = e.target.value;
             setGame(g);
           }}>
@@ -220,7 +221,7 @@ function App() {
             type="text" required maxLength={2}
             value={handTwo.cards[4].id}
           onChange={e => {
-            const g = { ...game };          
+            const g = { ...game };
             g.handTwo.cards[4].id = e.target.value;
             setGame(g);
           }}>
@@ -237,7 +238,7 @@ function App() {
         <label>Hand Rank: {result.loser.handRank}</label><br/>
         <label>Card Rank: {result.loser.cardRank}</label>
       </div>
-      
+
 
     </div>
   );
